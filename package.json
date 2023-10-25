@@ -1,8 +1,7 @@
 {
-  "name": "bootsman-ui",
+  "name": "@soft-stech/bootsman-ui",
   "version": "0.0.1",
-  "private": true,
-  "author": "Ilya Artamonov<cogor>",
+  "author": "soft-stech",
   "repository": "https://github.com/soft-stech/bootsman-ui",
   "files": [
     "dist"
@@ -33,7 +32,7 @@
     "switch:2": "vue-demi-switch 2 vue2",
     "switch:3": "vue-demi-switch 3",
     "build:package": "vite build",
-    "build:types": "vue-tsc --emitDeclarationOnly",
+    "build:types": "vue-tsc --emitDeclarationOnly -p tsconfig.vitest.json --composite false",
     "build:production": "npm run build:package && npm run build:types",
     "story:dev": "histoire dev",
     "story:build": "histoire build",
