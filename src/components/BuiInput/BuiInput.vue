@@ -41,8 +41,8 @@ interface InputProps {
   label?: string
   modelValue?: string
   required?: boolean
-  validationStatus?: ValidationStatus
-  placeholder?: string | null
+  validationStatus?: ValidationStatus | null
+  placeholder?: string | undefined
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
