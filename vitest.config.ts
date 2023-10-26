@@ -12,7 +12,7 @@ export default mergeConfig(
       globals: true,
       coverage: {
         provider: 'istanbul',
-        reporter: ['text', ['json', { file: 'coverage-summary.json' }]]
+        reporter: ['text', 'json-summary']
       }
     }
   })
