@@ -22,7 +22,7 @@ describe('BuiButton', () => {
     createComponent({ props: { color: 'primary' } })
 
     expect(wrapper.classes().join(' ')).toEqual(
-      'focus:ring-4 focus:ring-primary-200 font-medium rounded text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none bg-primary-500 hover:bg-primary-600 dark:bg-primary-500 dark:hover:bg-primary-600 dark:focus:ring-primary-400 text-white'
+      'focus:ring-4 focus:ring-primary-200 font-medium rounded text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none bg-primary-500 hover:bg-primary-550 dark:bg-primary-500 dark:hover:bg-primary-600 dark:focus:ring-primary-400 text-white'
     )
   })
   test('secondary button classes is correct', () => {
