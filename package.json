@@ -39,6 +39,8 @@
     "story:preview": "histoire preview"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "^5.0.15",
+    "@vueuse/core": "^10.5.0",
     "tailwind-merge": "^1.14.0",
     "vue-demi": "^0.14.6"
   },
