@@ -11,6 +11,7 @@ export default mergeConfig(
       root: fileURLToPath(new URL('./', import.meta.url)),
       globals: true,
       coverage: {
+        provider: 'istanbul',
         reporter: ['text', ['json', { file: 'coverage-summary.json' }]]
       }
     }
