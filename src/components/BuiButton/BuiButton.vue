@@ -11,7 +11,7 @@ const colorClasses: Record<ButtonColor, string> = {
     'bg-primary-500 hover:bg-primary-600 dark:bg-primary-500 dark:hover:bg-primary-600 dark:focus:ring-primary-400 text-white',
   secondary:
     'bg-primary-150 hover:bg-primary-200 dark:bg-primary-650 dark:hover:bg-primary-700 dark:focus:ring-primary-300 text-primary-500',
-  link: ''
+  link: 'text-primary-500 bg-transparent hover:bg-primary-100 dark:hover:bg-primary-650 dark:hover:text-primary-400'
 }
 
 interface IBuiButtonProps {
