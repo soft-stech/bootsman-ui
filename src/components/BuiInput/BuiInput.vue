@@ -58,7 +58,7 @@ const emit = defineEmits(['focus', 'blur', 'update:modelValue'])
 const model = useVModel(props, 'modelValue')
 
 const inputClasses = twMerge(
-  'py-2 px-3 border border-slate-300 dark:border-gray-500  dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500',
+  'py-2 px-3 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500',
   props.validationStatus === 'success' &&
     'border-green-300 focus:border-green-300 focus:ring-green-200',
   props.validationStatus === 'error' && 'border-red-300 focus:border-red-300 focus:ring-red-200'
