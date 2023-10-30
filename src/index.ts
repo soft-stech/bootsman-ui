@@ -1,3 +1,5 @@
 import './assets/main.css'
 
 export { default as BuiButton } from './components/BuiButton/BuiButton.vue'
+export { default as BuiInput } from './components/BuiInput/BuiInput.vue'
+export { default as BuiSelect } from './components/BuiSelect/BuiSelect.vue'
