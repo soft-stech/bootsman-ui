@@ -10,9 +10,9 @@ import { logEvent } from 'histoire/client'
         <BuiTag label="Default">Tag</BuiTag>
       </div>
     </Variant>
-    <Variant title="Default">
+    <Variant title="Dissmisable">
       <div class="p-2">
-        <BuiTag label="Default" dissmisable @close="logEvent('close')">Tag</BuiTag>
+        <BuiTag label="Default" dissmisable @close="logEvent('close', $event)">Tag</BuiTag>
       </div>
     </Variant>
   </Story>
