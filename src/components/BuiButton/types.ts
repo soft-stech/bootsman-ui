@@ -1,1 +1,2 @@
-export type ButtonColor = 'primary' | 'secondary' | 'link'
+export type ButtonColor = 'primary' | 'secondary' | 'text' | 'outline'
+export type ButtonSize = 'lg' | 'md' | 'sm'

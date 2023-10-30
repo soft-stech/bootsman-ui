@@ -5,11 +5,12 @@ import { ButtonColor } from './types'
 import type { TestWrapper } from '../../types/globalTypes'
 
 describe('BuiButton', () => {
-  // @ts-ignore
+  // @ts-ignore-next-line
   let wrapper: TestWrapper
 
   const createComponent = (props: {
     props: {
+      disabled?: boolean
       color: ButtonColor
     }
   }) => {
@@ -18,25 +19,41 @@ describe('BuiButton', () => {
       ...props
     })
   }
-  test('default button classes is correct', () => {
+  test('default button snapshot', async () => {
     createComponent({ props: { color: 'primary' } })
-
-    expect(wrapper.classes().join(' ')).toEqual(
-      'focus:ring-4 focus:ring-primary-200 font-medium rounded text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none bg-primary-500 hover:bg-primary-550 dark:bg-primary-500 dark:hover:bg-primary-600 dark:focus:ring-primary-400 text-white'
-    )
+    const result = wrapper.html()
+    await expect(result).toMatchFileSnapshot('./test/default.output.html')
   })
-  test('secondary button classes is correct', () => {
+  test('default disabled button snapshot', async () => {
+    createComponent({ props: { color: 'primary', disabled: true } })
+    const result = wrapper.html()
+    await expect(result).toMatchFileSnapshot('./test/default-disabled.output.html')
+  })
+
+  test('secondary button classes is correct', async () => {
     createComponent({ props: { color: 'secondary' } })
 
-    expect(wrapper.classes().join(' ')).toEqual(
-      'focus:ring-4 focus:ring-primary-200 font-medium rounded text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none bg-primary-150 hover:bg-primary-200 dark:bg-primary-650 dark:hover:bg-primary-700 dark:focus:ring-primary-300 text-primary-500'
-    )
+    const result = wrapper.html()
+    await expect(result).toMatchFileSnapshot('./test/secondary.output.html')
   })
-  test('text button classes is correct', () => {
-    createComponent({ props: { color: 'link' } })
 
-    expect(wrapper.classes().join(' ')).toEqual(
-      'focus:ring-4 focus:ring-primary-200 font-medium rounded text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none text-primary-500 bg-transparent hover:bg-primary-100 dark:hover:bg-primary-650 dark:hover:text-primary-400'
-    )
+  test('secondary disabled button snapshot', async () => {
+    createComponent({ props: { color: 'secondary', disabled: true } })
+    const result = wrapper.html()
+    await expect(result).toMatchFileSnapshot('./test/secondary-disabled.output.html')
+  })
+
+  test('text button classes is correct', async () => {
+    createComponent({ props: { color: 'text' } })
+
+    const result = wrapper.html()
+    await expect(result).toMatchFileSnapshot('./test/text.output.html')
+  })
+
+  test('text button disabled snapshot', async () => {
+    createComponent({ props: { color: 'text' } })
+
+    const result = wrapper.html()
+    await expect(result).toMatchFileSnapshot('./test/text-disabled.output.html')
   })
 })
