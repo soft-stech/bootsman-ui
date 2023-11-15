@@ -1,6 +1,6 @@
 {
   "name": "@soft-stech/bootsman-ui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "soft-stech",
   "repository": "https://github.com/soft-stech/bootsman-ui",
   "main": "dist/bootsman-ui.umd.js",
