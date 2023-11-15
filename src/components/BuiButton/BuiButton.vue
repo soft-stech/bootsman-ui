@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { twJoin, twMerge } from 'tailwind-merge'
-import { computed } from 'vue-demi'
+import { computed } from 'vue'
 import type { ButtonColor, ButtonSize } from './types.ts'
 
 interface IBuiButtonProps {
