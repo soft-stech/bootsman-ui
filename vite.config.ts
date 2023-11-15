@@ -18,19 +18,26 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
-      name: 'bootsmanUI',
-      formats: ['umd', 'es'],
-      fileName: (format) => `bootsman-ui.${format}.js`
+      name: 'bootsmanUI'
     },
     rollupOptions: {
       external: ['vue-demi'],
-      output: {
-        esModule: true,
-        exports: 'named',
-        globals: {
-          'vue-demi': 'VueDemi'
+      output: [
+        {
+          exports: 'named',
+          format: 'cjs'
+        },
+        {
+          format: 'es'
+        },
+        {
+          format: 'umd',
+          name: 'BootsmanUi',
+          globals: {
+            'vue-demi': 'VueDemi'
+          }
         }
-      }
+      ]
     },
     minify: true
   }
