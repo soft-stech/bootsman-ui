@@ -3,16 +3,15 @@
   "version": "0.0.6",
   "author": "soft-stech",
   "repository": "https://github.com/soft-stech/bootsman-ui",
-  "main": "dist/bootsman-ui.cjs.min.js",
-  "browser": "dist/bootsman-ui.esm.min.js",
-  "unpkg": "dist/bootsman-ui.global.min.js",
+  "main": "dist/bootsman-ui.umd.js",
+  "browser": "dist/bootsman-ui.mjs",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/bootsman-ui.esm.min.js",
-      "require": "./dist/bootsman-ui.cjs.min.js"
+      "import": "./dist/bootsman-ui.mjs",
+      "require": "./dist/bootsman-ui.umd.js"
     },
     "./dist/style.css": {
       "import": "./dist/index.css",
