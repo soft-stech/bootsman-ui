@@ -5,9 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -18,18 +16,22 @@ export default defineConfig({
   },
   build: {
     cssCodeSplit: true,
-    target: 'esnext',
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
-      name: 'bootsman-ui',
+      name: 'bootsmanUI',
+      formats: ['umd', 'es'],
+      fileName: (format) => `bootsman-ui.${format}.js`
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue-demi'],
       output: {
+        esModule: true,
+        exports: 'named',
         globals: {
-          vue: 'Vue',
-        },
-      },
+          'vue-demi': 'VueDemi'
+        }
+      }
     },
-  },
+    minify: true
+  }
 })

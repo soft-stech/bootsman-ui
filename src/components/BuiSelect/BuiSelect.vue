@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed } from 'vue-demi'
 import { useVModel } from '@vueuse/core'
 import { twMerge } from 'tailwind-merge'
 
