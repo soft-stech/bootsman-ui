@@ -22,10 +22,9 @@ export default defineConfig({
       name: 'bootsman-ui'
     },
     rollupOptions: {
-      external: ['vue', 'vue-demi'],
+      external: ['vue-demi'],
       output: {
         globals: {
-          vue: 'Vue',
           'vue-demi': 'VueDemi'
         }
       }
