@@ -2,17 +2,6 @@ import { twJoin, twMerge } from 'tailwind-merge'
 import { computed, defineComponent, h } from 'vue-demi'
 import type { ButtonColor, ButtonSize } from './types.ts'
 
-// interface IBuiButtonProps {
-//   disabled?: boolean
-//   color?: ButtonColor
-//   size?: ButtonSize
-// }
-// const props = withDefaults(defineProps<IBuiButtonProps>(), {
-//   disabled: false,
-//   color: 'primary',
-//   size: 'md'
-// })
-
 const baseClasses = 'font-medium rounded text-sm focus:outline-none'
 
 // Style Classes
@@ -44,32 +33,7 @@ const outlineButtonClasses = {
   disabled:
     'text-primary-250 border-primary-250 bg-primary-100 dark:bg-transparent hover:bg-primary-100 cursor-not-allowed dark:border-primary-590 dark:text-primary-590 dark:hover:text-primary-590'
 }
-const colorClasses: Record<ButtonColor, string> = {
-  primary: twJoin(
-    primaryButtonClasses.base,
-    primaryButtonClasses.hover,
-    primaryButtonClasses.focus,
-    props.disabled && primaryButtonClasses.disabled
-  ),
-  secondary: twJoin(
-    secondaryButtonClasses.base,
-    secondaryButtonClasses.hover,
-    secondaryButtonClasses.focus,
-    props.disabled && secondaryButtonClasses.disabled
-  ),
-  text: twJoin(
-    textButtonClasses.base,
-    textButtonClasses.hover,
-    textButtonClasses.focus,
-    props.disabled && textButtonClasses.disabled
-  ),
-  outline: twJoin(
-    outlineButtonClasses.base,
-    outlineButtonClasses.hover,
-    outlineButtonClasses.focus,
-    props.disabled && outlineButtonClasses.disabled
-  )
-}
+
 const sizeClasses: Record<ButtonSize, string> = {
   lg: 'py-2 px-5',
   md: 'py-1 px-4',
@@ -92,6 +56,32 @@ export const BuiButton = defineComponent({
     }
   },
   setup(props, { slots }) {
+    const colorClasses: Record<ButtonColor, string> = {
+      primary: twJoin(
+        primaryButtonClasses.base,
+        primaryButtonClasses.hover,
+        primaryButtonClasses.focus,
+        props.disabled && primaryButtonClasses.disabled
+      ),
+      secondary: twJoin(
+        secondaryButtonClasses.base,
+        secondaryButtonClasses.hover,
+        secondaryButtonClasses.focus,
+        props.disabled && secondaryButtonClasses.disabled
+      ),
+      text: twJoin(
+        textButtonClasses.base,
+        textButtonClasses.hover,
+        textButtonClasses.focus,
+        props.disabled && textButtonClasses.disabled
+      ),
+      outline: twJoin(
+        outlineButtonClasses.base,
+        outlineButtonClasses.hover,
+        outlineButtonClasses.focus,
+        props.disabled && outlineButtonClasses.disabled
+      )
+    }
     const buttonClasses = computed(() => {
       return twMerge(baseClasses, colorClasses[props.color], sizeClasses[props.size])
     })
