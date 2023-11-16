@@ -90,7 +90,7 @@ export default defineComponent({
       h(
         'div',
         {
-          class: buttonClasses,
+          class: buttonClasses.value,
           disabled: props.disabled
         },
         [slots.prefix?.(), slots.default?.(), slots.suffix?.()]
