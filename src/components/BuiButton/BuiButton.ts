@@ -93,7 +93,7 @@ export default defineComponent({
           class: buttonClasses,
           disabled: props.disabled
         },
-        [slots.prefix(), slots.default(), slots.suffix()]
+        [slots.prefix?.(), slots.default?.(), slots.suffix?.()]
       )
   }
 })
