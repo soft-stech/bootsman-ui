@@ -2,16 +2,16 @@ import { twJoin, twMerge } from 'tailwind-merge'
 import { computed, defineComponent, h } from 'vue-demi'
 import type { ButtonColor, ButtonSize } from './types.ts'
 
-interface IBuiButtonProps {
-  disabled?: boolean
-  color?: ButtonColor
-  size?: ButtonSize
-}
-const props = withDefaults(defineProps<IBuiButtonProps>(), {
-  disabled: false,
-  color: 'primary',
-  size: 'md'
-})
+// interface IBuiButtonProps {
+//   disabled?: boolean
+//   color?: ButtonColor
+//   size?: ButtonSize
+// }
+// const props = withDefaults(defineProps<IBuiButtonProps>(), {
+//   disabled: false,
+//   color: 'primary',
+//   size: 'md'
+// })
 
 const baseClasses = 'font-medium rounded text-sm focus:outline-none'
 
@@ -77,7 +77,20 @@ const sizeClasses: Record<ButtonSize, string> = {
 }
 
 export const BuiButton = defineComponent({
-  props: props,
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    color: {
+      type: String,
+      default: 'primary'
+    },
+    size: {
+      type: String,
+      default: 'md'
+    }
+  },
   setup(props, { slots }) {
     const buttonClasses = computed(() => {
       return twMerge(baseClasses, colorClasses[props.color], sizeClasses[props.size])
