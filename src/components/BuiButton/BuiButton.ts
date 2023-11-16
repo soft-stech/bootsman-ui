@@ -40,7 +40,8 @@ const sizeClasses: Record<ButtonSize, string> = {
   sm: 'py-0.5 px-4'
 }
 
-export const BuiButton = defineComponent({
+export default defineComponent({
+  name: 'BuiButton',
   props: {
     disabled: {
       type: Boolean,
