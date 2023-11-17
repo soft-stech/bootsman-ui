@@ -2,11 +2,10 @@ import { shallowMount } from '@vue/test-utils'
 import BuiButton from './BuiButton.vue'
 import { describe, expect, test } from 'vitest'
 import { ButtonColor } from './types'
-import type { TestWrapper } from '../../types/globalTypes'
 
 describe('BuiButton', () => {
   // @ts-ignore-next-line
-  let wrapper: TestWrapper
+  let wrapper: any
 
   const createComponent = (props: {
     props: {
@@ -15,7 +14,6 @@ describe('BuiButton', () => {
     }
   }) => {
     wrapper = shallowMount(BuiButton, {
-      global: { stubs: { teleport: true } },
       ...props
     })
   }
