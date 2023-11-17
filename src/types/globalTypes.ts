@@ -1,4 +1,4 @@
-import { VueWrapper } from '@vue/test-utils'
+import type { Wrapper } from '@vue/test-utils'
 import { ComponentPublicInstance } from 'vue'
 
-export type TestWrapper<T> = VueWrapper<ComponentPublicInstance & T>
+export type TestWrapper<T> = Wrapper<ComponentPublicInstance & T>

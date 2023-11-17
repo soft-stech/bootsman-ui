@@ -19,7 +19,6 @@ describe('BuiSelect', () => {
 
   const createComponent = (props: any) => {
     wrapper = shallowMount(BuiSelect, {
-      global: { stubs: { teleport: true } },
       ...props
     })
   }

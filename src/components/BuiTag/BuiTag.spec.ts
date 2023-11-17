@@ -13,7 +13,6 @@ describe('BuiTag', () => {
     }
   }) => {
     wrapper = shallowMount(BuiTag, {
-      global: { stubs: { teleport: true } },
       ...props
     })
   }
