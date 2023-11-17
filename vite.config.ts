@@ -22,7 +22,6 @@ export default defineConfig({
   },
   build: {
     cssCodeSplit: true,
-    target: 'esnext',
     lib: {
       formats: ['es', 'cjs', 'umd'],
       entry: resolve(__dirname, './src/index.ts'),
@@ -34,6 +33,7 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue'],
       output: {
+        exports: 'named',
         globals: {
           vue: 'Vue'
         }
