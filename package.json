@@ -3,19 +3,27 @@
   "version": "0.0.20",
   "author": "soft-stech",
   "repository": "https://github.com/soft-stech/bootsman-ui",
-  "main": "dist/bootsman-ui.umd.js",
-  "browser": "dist/bootsman-ui.mjs",
+  "main": "dist/index.umd.cjs",
+  "module": "dist/index.es.mjs",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/bootsman-ui.mjs",
-      "require": "./dist/bootsman-ui.umd.js"
+      "types": "./dist/index.d.ts",
+      "script": "./dist/index.umd.js",
+      "require": "./dist/index.cjs.cjs",
+      "import": "./dist/index.es.mjs",
+      "default": "./dist/index.umd.js"
     },
+    "./style.css": "./dist/style.css",
+    "./package.json": "./package.json",
+    "./src/": "./src/",
     "./dist/style.css": {
-      "import": "./dist/index.css",
-      "require": "./dist/index.css"
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     },
     "./*": "./dist/*"
   },

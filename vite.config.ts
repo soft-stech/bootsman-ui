@@ -6,7 +6,12 @@ import { version } from 'vue'
 import { parse } from 'semver'
 import AutoImport from 'unplugin-auto-import/vite'
 const { major, minor } = parse(version)
-
+const fileExtensionMap = {
+  es: 'mjs',
+  cjs: 'cjs',
+  iife: 'js',
+  umd: 'js'
+}
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
@@ -19,8 +24,12 @@ export default defineConfig({
     cssCodeSplit: true,
     target: 'esnext',
     lib: {
+      formats: ['es', 'cjs', 'umd'],
       entry: resolve(__dirname, './src/index.ts'),
-      name: 'bootsman-ui'
+      name: 'bootsman-ui',
+      fileName: (format: keyof typeof fileExtensionMap) => {
+        return `index.${format}.${fileExtensionMap[format]}`
+      }
     },
     rollupOptions: {
       external: ['vue'],
