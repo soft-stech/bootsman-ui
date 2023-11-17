@@ -1,7 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import vue from '@vitejs/plugin-vue2'
 import { version } from 'vue'
 import { parse } from 'semver'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -9,30 +9,11 @@ const { major, minor } = parse(version)
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    AutoImport({
-      // targets to transform
-      include: [
-        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-        /\.vue$/,
-        /\.vue\?vue/, // .vue
-        /\.md$/ // .md
-      ],
-      // global imports to register
-      imports: [
-        // presets
-        major === 3 || (major === 2 && minor >= 7) ? 'vue' : '@vue/composition-api'
-      ]
-    })
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  },
-  optimizeDeps: {
-    exclude: ['vue-demi']
   },
   build: {
     cssCodeSplit: true,
@@ -42,11 +23,10 @@ export default defineConfig({
       name: 'bootsman-ui'
     },
     rollupOptions: {
-      external: ['vue-demi', 'vue'],
+      external: ['vue'],
       output: {
         globals: {
-          vue: 'Vue',
-          'vue-demi': 'VueDemi'
+          vue: 'Vue'
         }
       }
     }
