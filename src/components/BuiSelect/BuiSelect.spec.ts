@@ -23,7 +23,7 @@ describe('BuiSelect', () => {
     })
   }
   test('select event fired', async () => {
-    createComponent({ props: { options: options } })
+    createComponent({ propsData: { options: options } })
     const input = wrapper.find('select')
     await input.setValue('1')
 
@@ -31,7 +31,7 @@ describe('BuiSelect', () => {
   })
 
   test('disabled select', async () => {
-    createComponent({ props: { options: options, disabled: true } })
+    createComponent({ propsData: { options: options, disabled: true } })
     const input = wrapper.find('select')
     await input.setValue('1')
 
@@ -40,10 +40,10 @@ describe('BuiSelect', () => {
 
   test('correct placeholder text', async () => {
     const placeholderText = 'My placeholder'
-    createComponent({ props: { options: options, placeholder: placeholderText } })
+    createComponent({ propsData: { options: options, placeholder: placeholderText } })
     const input = wrapper.find('select')
     const optionList = input.findAll('option')
 
-    expect(optionList[0].text()).toBe(placeholderText)
+    expect(optionList.wrappers[0].text()).toBe(placeholderText)
   })
 })

@@ -13,7 +13,7 @@
         :disabled="disabled"
         :required="required"
         :class="[inputClasses, $slots.prefix ? 'pl-10' : '']"
-        @focus="emit('focus')"
+        @focusin="emit('focus')"
         @blur="emit('blur')"
         :placeholder="placeholder"
       />
