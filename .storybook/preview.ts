@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/vue'
 import '../src/assets/main.css'
 import '@fontsource-variable/inter'
+import { withThemeByClassName, withThemeByDataAttribute } from '@storybook/addon-themes'
 
 const preview: Preview = {
   parameters: {
@@ -14,5 +15,14 @@ const preview: Preview = {
     layout: 'centered'
   }
 }
-
+export const decorators = [
+  withThemeByDataAttribute({
+    themes: {
+      light: 'light',
+      dark: 'dark'
+    },
+    defaultTheme: 'light',
+    attributeName: 'data-mode'
+  })
+]
 export default preview
