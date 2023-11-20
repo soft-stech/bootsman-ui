@@ -30,4 +30,4 @@ coverage
 test-results/
 playwright-report/
 .histoire
-
+storybook-static
