@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.0.15",
-    "@vueuse/core": "^10.5.0",
+    "@vueuse/core": "^10.6.1",
     "tailwind-merge": "^1.14.0",
     "unplugin-auto-import": "^0.16.7"
   },
