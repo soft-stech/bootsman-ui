@@ -33,38 +33,22 @@ export const Primary: Story = {
   args: {
     color: 'primary'
   }
-  // render: () => ({
-  //   components: { Button },
-  //   template: '<Button color="primary">Button</Button>'
-  // })
 }
 
 export const Secondary: Story = {
   args: {
     color: 'secondary'
   }
-  // render: () => ({
-  //   components: { Button },
-  //   template: '<Button color="secondary">Button</Button>'
-  // })
 }
 
 export const Outline: Story = {
   args: {
     color: 'outline'
   }
-  // render: () => ({
-  //   components: { Button },
-  //   template: '<Button color="outline">Button</Button>'
-  // })
 }
 
 export const Text: Story = {
   args: {
     color: 'text'
   }
-  // render: () => ({
-  //   components: { Button },
-  //   template: '<Button color="text">Button</Button>'
-  // })
 }
