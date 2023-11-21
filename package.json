@@ -40,8 +40,6 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "switch:2": "vue-demi-switch 2 vue2",
-    "switch:3": "vue-demi-switch 3",
     "build:package": "vite build",
     "build:types": "vue-tsc --emitDeclarationOnly -p tsconfig.vitest.json --composite false",
     "build:production": "npm run build:package",
