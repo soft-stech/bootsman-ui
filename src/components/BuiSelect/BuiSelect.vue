@@ -52,9 +52,9 @@ const emit = defineEmits(['update:modelValue'])
 
 const model = useVModel(props, 'modelValue', emit)
 
-const defaultLabelClasses = 'block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+const defaultLabelClasses = 'block mb-1 text-sm font-medium text-gray-900 dark:text-white'
 const defaultSelectClasses =
-  'px-3 py-2 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 w-full appearance-none'
+  'px-3 py-2 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 w-full appearance-none pr-8'
 const disabledSelectClasses = 'cursor-not-allowed bg-gray-200'
 const selectIconClasses = twMerge(
   'absolute right-2 bottom-2.5',
