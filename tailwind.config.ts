@@ -33,6 +33,9 @@ module.exports = {
           100: '#F5F6F8',
           150: '#F8F8FA',
           200: '#F8F8FA',
+          250: '#DDDFE4',
+          300: '#D0D3DA',
+          350: '#B8BDCC',
           400: '#AAAFBD',
           500: '#737680'
         },
@@ -43,6 +46,9 @@ module.exports = {
         green: {
           300: '#12D480'
         }
+      },
+      border: {
+        xlg: '10px'
       }
     }
   },
