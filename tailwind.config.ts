@@ -18,6 +18,7 @@ module.exports = {
           575: '#4e4cca',
           590: '#5151a8',
           600: '#413f7c',
+          610: '#363673',
           625: '#35345e',
           650: '#2f2e51',
           700: '#323149',
@@ -47,8 +48,11 @@ module.exports = {
           300: '#12D480'
         }
       },
-      border: {
+      borderRadius: {
         xlg: '10px'
+      },
+      boxShadow: {
+        my: '0px 56px 24px 0px rgba(41, 40, 65, 0.08), 0px 32px 24px 0px rgba(41, 40, 65, 0.08), 0px 32px 24px 0px rgba(41, 40, 65, 0.08)'
       }
     }
   },
