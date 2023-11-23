@@ -35,22 +35,29 @@ type OptionsType = {
   value: any
 }
 interface InputProps {
-  modelValue?: string
+  value?: string
   label?: string
   options?: OptionsType[]
   placeholder?: string
   disabled?: boolean
 }
 const props = withDefaults(defineProps<InputProps>(), {
-  modelValue: '',
+  value: '',
   label: '',
   options: () => [],
   placeholder: 'Please select one',
   disabled: false
 })
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['input'])
 
-const model = useVModel(props, 'modelValue', emit)
+const model = computed({
+  get() {
+    return props.value
+  },
+  set(event) {
+    emit('input', event)
+  }
+})
 
 const defaultLabelClasses = 'block mb-1 text-sm font-medium text-gray-900 dark:text-white'
 const defaultSelectClasses =

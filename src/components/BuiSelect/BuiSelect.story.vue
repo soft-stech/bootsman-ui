@@ -24,7 +24,7 @@ const options = [
     </Variant>
     <Variant title="Disabled">
       <div class="p-2">
-        <BuiSelect label="Default" v-model="model" :options="options" disabled />
+        <BuiSelect label="Default" :options="options" disabled />
       </div>
     </Variant>
   </Story>

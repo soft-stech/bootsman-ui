@@ -32,14 +32,13 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useVModel } from '@vueuse/core'
 import { twMerge } from 'tailwind-merge'
 
 type ValidationStatus = 'success' | 'error'
 interface InputProps {
   disabled?: boolean
   label?: string
-  modelValue?: string
+  value?: string
   required?: boolean
   validationStatus?: ValidationStatus | null
   placeholder?: string | undefined
@@ -48,14 +47,21 @@ interface InputProps {
 const props = withDefaults(defineProps<InputProps>(), {
   disabled: false,
   label: '',
-  modelValue: '',
+  value: '',
   required: false,
   validationStatus: null,
   placeholder: ''
 })
-const emit = defineEmits(['focus', 'blur', 'update:modelValue'])
+const emit = defineEmits(['focus', 'blur', 'input'])
 
-const model = useVModel(props, 'modelValue')
+const model = computed({
+  get() {
+    return props.value
+  },
+  set(event) {
+    emit('input', event)
+  }
+})
 
 const inputClasses = twMerge(
   'py-2 px-3 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500',
