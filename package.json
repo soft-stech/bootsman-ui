@@ -44,7 +44,10 @@
     "build:types": "vue-tsc --emitDeclarationOnly -p tsconfig.vitest.json --composite false",
     "build:production": "npm run build:package",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.0.15",
@@ -57,6 +60,7 @@
     "vue": "^2.7.x"
   },
   "devDependencies": {
+    "@histoire/plugin-vue2": "^0.17.4",
     "@playwright/test": "^1.39.0",
     "@rushstack/eslint-patch": "^1.3.3",
     "@storybook/addon-essentials": "^7.5.3",
@@ -82,6 +86,7 @@
     "eslint": "^8.49.0",
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-vue": "^9.17.0",
+    "histoire": "^0.17.5",
     "jsdom": "^22.1.0",
     "npm-run-all2": "^6.1.1",
     "postcss": "^8.4.31",

@@ -26,7 +26,7 @@ jobs:
           cache: 'npm'
       - run: npm i
       - name: Build docs
-        run: npm run build-storybook
+        run: npm run story:build
   build-pkg:
 
     runs-on: ubuntu-latest
