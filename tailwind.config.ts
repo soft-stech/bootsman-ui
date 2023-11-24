@@ -28,6 +28,8 @@ module.exports = {
           500: '#292841'
         },
         slate: {
+          150: '#F0F3FF',
+          200: '#EBECEF',
           300: '#D0D3DA'
         },
         gray: {
