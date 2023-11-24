@@ -14,5 +14,13 @@ const toggle = ref(false)
         <HstCheckbox v-model="toggle" title="Checked" />
       </template>
     </Variant>
+    <Variant title="Disabled">
+      <div class="p-2">
+        <BuiToggle v-model="toggle" disabled />
+      </div>
+      <template #controls>
+        <HstCheckbox v-model="toggle" title="Checked" />
+      </template>
+    </Variant>
   </Story>
 </template>
