@@ -27,7 +27,7 @@ describe('BuiSelect', () => {
     const input = wrapper.find('select')
     await input.setValue('1')
 
-    expect(wrapper.emitted('update:modelValue')[0][0]).toBe('1')
+    expect(wrapper.emitted('input')[0][0]).toBe('1')
   })
 
   test('disabled select', async () => {
@@ -35,7 +35,7 @@ describe('BuiSelect', () => {
     const input = wrapper.find('select')
     await input.setValue('1')
 
-    expect(wrapper.emitted('update:modelValue')).toBeFalsy()
+    expect(wrapper.emitted('input')).toBeFalsy()
   })
 
   test('correct placeholder text', async () => {

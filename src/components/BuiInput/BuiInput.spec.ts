@@ -19,7 +19,7 @@ describe('BuiInput', () => {
     await input.setValue('some-text')
 
     expect(input.element.value).toBe('some-text')
-    expect(wrapper.emitted('update:modelValue')[0][0]).toBe('some-text')
+    expect(wrapper.emitted('input')[0][0]).toBe('some-text')
   })
 
   test('focus event fired', async () => {
