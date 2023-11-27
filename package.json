@@ -42,9 +42,7 @@
     "format": "prettier --write src/",
     "build:package": "vite build",
     "build:types": "vue-tsc --emitDeclarationOnly -p tsconfig.vitest.json --composite false",
-    "build:production": "npm run build:package",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build:production": "npm run build:package && npm run build:types",
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview"

@@ -1,11 +1,10 @@
 import { shallowMount } from '@vue/test-utils'
 import BuiTag from './BuiTag.vue'
 import { describe, expect, test } from 'vitest'
-import type { TestWrapper } from '../../types/globalTypes'
 
 describe('BuiTag', () => {
   // @ts-ignore-next-line
-  let wrapper: TestWrapper
+  let wrapper: any
 
   const createComponent = (props?: {
     props: {

@@ -1,7 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import BuiSelect from './BuiSelect.vue'
 import { describe, expect, test } from 'vitest'
-import type { TestWrapper } from '../../types/globalTypes'
 
 const options = [
   {
@@ -15,7 +14,7 @@ const options = [
 ]
 describe('BuiSelect', () => {
   // @ts-ignore
-  let wrapper: TestWrapper
+  let wrapper: any
 
   const createComponent = (props: any) => {
     wrapper = shallowMount(BuiSelect, {

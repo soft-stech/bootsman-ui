@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import { ref, useSlots, computed } from 'vue'
+import { ref } from 'vue'
 const imageError = ref(false)
 
 function setImageError() {
   imageError.value = true
 }
 
-const slots = useSlots()
-const hasPlaceholder = computed(() => slots.placeholder)
-
-const props = defineProps({
+defineProps({
   alt: {
     type: String,
     default: 'Avatar'
