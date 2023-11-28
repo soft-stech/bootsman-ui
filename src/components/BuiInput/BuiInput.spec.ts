@@ -44,7 +44,7 @@ describe('BuiInput', () => {
     createComponent()
     const input = wrapper.find('input')
     expect(input.classes().join(' ')).toEqual(
-      'py-2 px-3 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500'
+      'py-2 px-3 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500'
     )
   })
 
@@ -52,7 +52,7 @@ describe('BuiInput', () => {
     createComponent({ propsData: { validationStatus: 'error' } })
     const input = wrapper.find('input')
     expect(input.classes().join(' ')).toEqual(
-      'py-2 px-3 border dark:border-gray-500 dark:focus:border-primary-500 bg-transparent rounded-lg focus:ring-4 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 border-red-300 focus:border-red-300 focus:ring-red-200'
+      'py-2 px-3 border dark:border-gray-500 dark:focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 border-red-300 focus:border-red-300 focus:ring-red-200'
     )
   })
 
@@ -60,7 +60,7 @@ describe('BuiInput', () => {
     createComponent({ propsData: { validationStatus: 'success' } })
     const input = wrapper.find('input')
     expect(input.classes().join(' ')).toEqual(
-      'py-2 px-3 border dark:border-gray-500 dark:focus:border-primary-500 bg-transparent rounded-lg focus:ring-4 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 border-green-300 focus:border-green-300 focus:ring-green-200'
+      'py-2 px-3 border dark:border-gray-500 dark:focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 border-green-300 focus:border-green-300 focus:ring-green-200'
     )
   })
 
