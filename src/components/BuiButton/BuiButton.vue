@@ -7,14 +7,16 @@ interface IBuiButtonProps {
   disabled?: boolean
   color?: ButtonColor
   size?: ButtonSize
+  classes?: string
 }
 const props = withDefaults(defineProps<IBuiButtonProps>(), {
   disabled: false,
   color: 'primary',
-  size: 'md'
+  size: 'md',
+  classes: ''
 })
 
-const baseClasses = 'font-medium rounded text-sm focus:outline-none'
+const baseClasses = 'font-medium rounded text-sm focus:outline-none flex'
 
 // Style Classes
 
@@ -45,6 +47,12 @@ const outlineButtonClasses = {
   disabled:
     'text-primary-250 border-primary-250 bg-primary-100 dark:bg-transparent hover:bg-primary-100 cursor-not-allowed dark:border-primary-590 dark:text-primary-590 dark:hover:text-primary-590'
 }
+const iconButtonClasses = {
+  base: 'bg-primary-150 dark:bg-primary-650',
+  hover: 'hover:bg-primary-150 dark:hover:bg-primary-650',
+  focus: 'dark:focus:ring-primary-300 focus:bg-primary-175',
+  disabled: 'text-primary-250 hover:bg-white cursor-not-allowed'
+}
 const colorClasses: Record<ButtonColor, string> = {
   primary: twJoin(
     primaryButtonClasses.base,
@@ -69,6 +77,12 @@ const colorClasses: Record<ButtonColor, string> = {
     outlineButtonClasses.hover,
     outlineButtonClasses.focus,
     props.disabled && outlineButtonClasses.disabled
+  ),
+  icon: twJoin(
+    iconButtonClasses.base,
+    iconButtonClasses.focus,
+    iconButtonClasses.hover,
+    props.disabled && iconButtonClasses.disabled
   )
 }
 const sizeClasses: Record<ButtonSize, string> = {
@@ -78,12 +92,13 @@ const sizeClasses: Record<ButtonSize, string> = {
 }
 
 const buttonClasses = computed(() => {
-  return twMerge(baseClasses, colorClasses[props.color], sizeClasses[props.size])
+  return twMerge(baseClasses, colorClasses[props.color], sizeClasses[props.size], props.classes)
 })
+const emit = defineEmits(['click'])
 </script>
 
 <template>
-  <button :class="buttonClasses" :disabled="disabled">
+  <button v-bind="$attrs" :class="buttonClasses" :disabled="disabled" @click="emit('click')">
     <slot name="prefix"></slot>
     <slot name="default">Primary</slot>
     <slot name="suffix"></slot>

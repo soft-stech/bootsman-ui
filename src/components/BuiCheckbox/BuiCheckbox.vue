@@ -67,7 +67,7 @@ const finalClasses = computed(() => {
         <InactiveCheckboxIcon :disabled="disabledAttrValue" />
       </label>
     </div>
-    <label class="flex-1 flex flex-col" :for="id">
+    <label class="flex-1 flex flex-col" :for="id" v-if="$slots.default || $slots.description">
       <div v-if="$slots.default" :class="finalClasses.labelClasses"><slot></slot></div>
       <div v-if="$slots.description" :class="finalClasses.descriptionClasses">
         <slot name="description"></slot>
