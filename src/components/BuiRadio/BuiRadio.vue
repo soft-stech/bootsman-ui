@@ -32,10 +32,6 @@ const disabledAttrValue = computed(() => {
   return Object.keys(props).includes('disabled') && props.disabled !== false ? true : undefined
 })
 
-const readonlyAttrValue = computed(() => {
-  return Object.keys(props).includes('readonly') && props.readonly !== false ? true : undefined
-})
-
 const baseLabelClasses = 'font-semibold leading-6 text-sm hover:cursor-pointer'
 const disabledLabelClasses = 'hover:!cursor-default text-gray-400'
 

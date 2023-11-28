@@ -49,7 +49,8 @@ module.exports = {
           300: '#E05FA3'
         },
         green: {
-          300: '#12D480'
+          300: '#12D480',
+          500: '#418485'
         }
       },
       borderRadius: {
