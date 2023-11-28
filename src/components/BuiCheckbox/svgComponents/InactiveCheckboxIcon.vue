@@ -27,15 +27,17 @@
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge'
 
-const props = withDefaults(defineProps<{ disabled: boolean }>(), {
-  disabled: false
+const props = withDefaults(defineProps<{ disabled: boolean; readonly: boolean }>(), {
+  disabled: false,
+  readonly: false
 })
 
 const rectClasses = twMerge(
   'bui-checkbox',
-  'dark:stroke-primary-500 dark:fill-primary-500  dark:group-hover:fill-primary-500 dark:group-hover:[.bui-checkbox-hover]',
+  'dark:stroke-primary-500 dark:fill-primary-500  dark:group-hover:fill-primary-500',
   'cursor-pointer stroke-gray-300 fill-white group-hover:fill-gray-150',
   props.disabled &&
-    'disabled cursor-default dark:fill-white dark:stroke-white dark:group-hover:fill-white fill-slate-200 group-hover:fill-slate-200'
+    'disabled cursor-not-allowed dark:fill-white dark:stroke-white dark:group-hover:fill-white fill-slate-200 group-hover:fill-slate-200',
+  props.readonly && 'group-hover:fill-white dark:group-hover:fill-primary-500'
 )
 </script>

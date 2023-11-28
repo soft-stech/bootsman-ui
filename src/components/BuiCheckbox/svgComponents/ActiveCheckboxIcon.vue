@@ -16,14 +16,20 @@
 </template>
 <script setup lang="ts">
 import { twMerge } from 'tailwind-merge'
-const props = withDefaults(defineProps<{ disabled: boolean }>(), {
-  disabled: false
+const props = withDefaults(defineProps<{ disabled: boolean; readonly: boolean }>(), {
+  disabled: false,
+  readonly: false
 })
 
-const svgClasses = twMerge('cursor-pointer', props.disabled && 'opacity-[0.32] cursor-default')
+const svgClasses = twMerge(
+  'cursor-pointer',
+  props.disabled && 'opacity-[0.32] cursor-not-allowed',
+  props.readonly && 'cursor-default'
+)
 
 const rectClasses = twMerge(
   'fill-primary-500 group-hover:fill-primary-550',
-  props.disabled && 'group-hover:fill-primary-500'
+  props.disabled && 'group-hover:fill-primary-500',
+  props.readonly && 'group-hover:fill-primary-500'
 )
 </script>
