@@ -34,15 +34,23 @@ const model2 = ref(false)
         </BuiCheckbox>
       </div>
     </Variant>
+    <Variant title="Readonly">
+      <div class="p-2">
+        <BuiCheckbox :readonly="true" :value="true">
+          My Label
+          <template #description>My description</template>
+        </BuiCheckbox>
+      </div>
+    </Variant>
     <Variant title="List">
       <form ref="modelGeneral">
         <div class="flex flex-col">
-          <BuiCheckbox groupName="options" option-name="option1" v-model="model"
-            >Option 1
+          <BuiCheckbox groupName="options" option-name="option1" v-model="model">
+            Option 1
           </BuiCheckbox>
-          <BuiCheckbox groupName="options" option-name="option2" v-model="model2"
-            >Option 2</BuiCheckbox
-          >
+          <BuiCheckbox groupName="options" option-name="option2" v-model="model2">
+            Option 2
+          </BuiCheckbox>
         </div>
       </form>
     </Variant>

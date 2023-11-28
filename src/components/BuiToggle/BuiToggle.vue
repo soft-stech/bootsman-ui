@@ -16,18 +16,18 @@ const props = withDefaults(defineProps<ToggleProps>(), {
 
 const emit = defineEmits(['input'])
 
-const labelClasses = 'flex text-clay-500 font-semibold text-sm mr-2'
+const labelClasses = 'flex font-semibold text-sm mr-2'
 const wrapperClasses = 'relative inline-flex items-center cursor-pointer justify-center'
 const toggleClasses = computed(() =>
   twMerge(
-    'inline-flex shrink-0 items-center rounded-[10px] bg-white dark:hover:bg-primary-500/30 dark:bg-primary-900 dark:border-primary-500 hover:bg-gray-150 disabled:bg-gray-250 border border-gray-300 w-11 h-5 relative px-[5px]',
+    'inline-flex shrink-0 items-center rounded-[10px] bg-white dark:hover:bg-primary-500/[.32] dark:bg-primary-500/[.16] dark:border-primary-500 hover:bg-gray-150 disabled:bg-gray-250 border border-gray-300 w-11 h-5 relative px-[5px]',
     props.value &&
       'bg-primary-500 border-primary-500 dark:bg-primary-500 dark:hover:bg-primary-550 dark:hover:border-primary-550 hover:bg-primary-550',
     props.disabled &&
       'bg-slate-300/20 border-slate-300/30 hover:bg-slate-300/20 hover:border-slate-300/30 dark:bg-white/10 dark:border-white/10 dark:hover:bg-white/10 dark:hover:border-white/10 cursor-not-allowed',
     props.disabled &&
       props.value &&
-      'dark:bg-primary-500/30 dark:border-primary-500/30 dark:hover:bg-primary-500/30 dark:hover:border-primary-500/30'
+      'dark:bg-primary-500/[.32] dark:border-primary-500/[.32] dark:hover:bg-primary-500/[.32] dark:hover:border-primary-500/[.32]'
   )
 )
 const toggleBallClasses = computed(() =>

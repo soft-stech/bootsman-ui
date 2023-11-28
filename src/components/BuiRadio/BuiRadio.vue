@@ -10,6 +10,7 @@ interface IBuiRadioProps {
   groupName?: string
   optionValue: string
   value: string
+  readonly?: boolean | undefined
 }
 const props = withDefaults(defineProps<IBuiRadioProps>(), {
   disabled: false
@@ -29,6 +30,10 @@ const id = nanoid(10)
 
 const disabledAttrValue = computed(() => {
   return Object.keys(props).includes('disabled') && props.disabled !== false ? true : undefined
+})
+
+const readonlyAttrValue = computed(() => {
+  return Object.keys(props).includes('readonly') && props.readonly !== false ? true : undefined
 })
 
 const baseLabelClasses = 'font-semibold leading-6 text-sm hover:cursor-pointer'
@@ -66,10 +71,10 @@ const finalClasses = computed(() => {
         <InactiveRadioIcon :disabled="disabledAttrValue" />
       </label>
     </div>
-    <label class="flex-1 flex flex-col" :for="id">
-      <div v-if="$slots.default" :class="finalClasses.labelClasses"><slot></slot></div>
+    <label class="flex-1 flex flex-col" :for="id" v-if="$slots.default || $slots.description">
+      <div v-if="$slots.default" :class="finalClasses.labelClasses"><slot /></div>
       <div v-if="$slots.description" :class="finalClasses.descriptionClasses">
-        <slot name="description"></slot>
+        <slot name="description" />
       </div>
     </label>
   </div>
