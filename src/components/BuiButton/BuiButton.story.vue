@@ -2,7 +2,7 @@
 import BuiButton from './BuiButton.vue'
 import { ButtonColor, ButtonSize } from './types'
 
-const colorOptions: ButtonColor[] = ['primary', 'secondary', 'outline', 'text']
+const colorOptions: ButtonColor[] = ['primary', 'secondary', 'outline', 'text', 'icon']
 const sizes: {
   name: string
   value: ButtonSize

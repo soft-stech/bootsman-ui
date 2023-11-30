@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import BuiInput from './BuiInput.vue'
+import BuiToggle from '../BuiToggle/BuiToggle.vue'
 import { ref } from 'vue'
 
 const model = ref('')
+const modelForDisabling = ref(false)
 </script>
 
 <template>
@@ -12,9 +14,9 @@ const model = ref('')
         <BuiInput label="Default" v-model="model" />
       </div>
     </Variant>
-    <Variant title="Placeholder">
+    <Variant title="Placeholder & required">
       <div class="p-2">
-        <BuiInput label="Default" v-model="model" placeholder="Some text" />
+        <BuiInput label="Default" v-model="model" placeholder="Some text" :required="true" />
       </div>
     </Variant>
     <Variant title="Error">
@@ -83,6 +85,14 @@ const model = ref('')
           </template>
         </BuiInput>
       </div>
+    </Variant>
+    <Variant title="Dynamic disabling">
+      <BuiToggle v-model="modelForDisabling" label="Disabled" />
+      <BuiInput
+        placeholder="Placeholder"
+        label="My label"
+        :disabled="modelForDisabling ? true : undefined"
+      />
     </Variant>
   </Story>
 </template>

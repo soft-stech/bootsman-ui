@@ -51,7 +51,7 @@ const iconButtonClasses = {
   base: 'bg-primary-150 dark:bg-primary-650',
   hover: 'hover:bg-primary-150 dark:hover:bg-primary-650',
   focus: 'dark:focus:ring-primary-300 focus:bg-primary-175',
-  disabled: 'text-primary-250 hover:bg-white cursor-not-allowed'
+  disabled: 'text-primary-250 cursor-not-allowed'
 }
 const colorClasses: Record<ButtonColor, string> = {
   primary: twJoin(
