@@ -74,6 +74,7 @@ function collapseAll() {
         v-model="model['section2']"
         tag="h3"
       >
+        <template #suffix><BuiButton color="primary">Test</BuiButton></template>
         <div class="text-sm p-4">Ut enim ad minim veniam, quis nostrud exercitation.</div>
       </BuiAccordion>
     </Variant>
