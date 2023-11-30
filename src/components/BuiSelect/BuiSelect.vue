@@ -2,6 +2,7 @@
   <label class="relative">
     <span v-if="label" :class="labelClasses">
       {{ label }}
+      <RequiredIcon v-if="required && !disabled" />
     </span>
 
     <span class="relative flex">
@@ -28,6 +29,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { twMerge } from 'tailwind-merge'
+import RequiredIcon from '@/components/CommonElements/RequiredIcon.vue'
 
 type OptionsType = {
   name: string
@@ -39,13 +41,15 @@ interface InputProps {
   options?: OptionsType[]
   placeholder?: string
   disabled?: boolean
+  required?: boolean
 }
 const props = withDefaults(defineProps<InputProps>(), {
   value: '',
   label: '',
   options: () => [],
   placeholder: 'Please select one',
-  disabled: false
+  disabled: false,
+  required: false
 })
 const emit = defineEmits(['input'])
 
@@ -59,9 +63,9 @@ const model = computed({
 })
 
 const defaultLabelClasses =
-  'block mb-1 text-sm font-semibold leading-6 text-gray-900 dark:text-white'
+  'flex flex-row gap-2 mb-1 text-sm font-semibold leading-6 text-gray-900 dark:text-white'
 const defaultSelectClasses =
-  'px-3 py-2 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 w-full appearance-none pr-8'
+  'px-3 py-2 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 w-full appearance-none pr-8'
 const disabledSelectClasses =
   'cursor-not-allowed bg-gray-200 dark:bg-clay-500 dark:text-white/[.32]'
 const selectIconClasses = twMerge(

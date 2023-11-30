@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col justify-center gap-1">
-    <label v-if="label" :class="labelClasses">{{ label }}</label>
+    <label v-if="label" :class="labelClasses">
+      {{ label }}
+      <RequiredIcon v-if="required && !disabled" />
+    </label>
     <div class="flex relative">
       <div
         v-if="$slots.prefix"
@@ -34,6 +37,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { twMerge } from 'tailwind-merge'
+import RequiredIcon from '@/components/CommonElements/RequiredIcon.vue'
 
 type ValidationStatus = 'success' | 'error'
 interface InputProps {
@@ -64,16 +68,19 @@ const model = computed({
   }
 })
 
-const inputClasses = twMerge(
-  'py-2 px-3 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500',
-  props.validationStatus === 'success' &&
-    'border-green-300 focus:border-green-300 focus:ring-green-200',
-  props.validationStatus === 'error' && 'border-red-300 focus:border-red-300 focus:ring-red-200',
-  props.disabled &&
-    'bg-gray-150 placeholer:text-gray-300 dark:bg-clay-500 dark:placeholder:text-white/[.16] cursor-not-allowed'
+const inputClasses = computed(() =>
+  twMerge(
+    'py-2 px-3 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500',
+    props.validationStatus === 'success' &&
+      'border-green-300 focus:border-green-300 focus:ring-green-200',
+    props.validationStatus === 'error' && 'border-red-300 focus:border-red-300 focus:ring-red-200',
+    props.disabled &&
+      'bg-gray-150 placeholer:text-gray-300 dark:bg-clay-500 dark:placeholder:text-white/[.16] cursor-not-allowed'
+  )
 )
 
-const labelClasses = 'text-sm text-clay-500 font-semibold leading-6 dark:text-gray-100'
+const labelClasses =
+  'flex flex-row gap-2 text-sm text-clay-500 font-semibold leading-6 dark:text-gray-100'
 const validationWrapperClasses = computed(() =>
   twMerge(
     'text-sm font-normal',
