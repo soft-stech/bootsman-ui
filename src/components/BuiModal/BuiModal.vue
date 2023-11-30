@@ -32,7 +32,7 @@ onBeforeUnmount(() => enableBodyScroll())
 </script>
 
 <template>
-  <div class="flex items-center justify-center fixed left-0 top-0 w-screen h-screen">
+  <div class="flex items-center justify-center fixed left-0 top-0 w-screen h-screen z-50">
     <div
       class="bg-primary-610 bg-opacity-50 dark:bg-opacity-80 absolute left-0 top-0 z-40 w-screen h-screen"
       @click.self="clickOutside"
