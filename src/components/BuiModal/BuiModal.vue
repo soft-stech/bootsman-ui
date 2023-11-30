@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted } from 'vue'
+
 interface ModalProps {
   notEscapable?: boolean
   persistent?: boolean
@@ -11,7 +13,6 @@ const props = withDefaults(defineProps<ModalProps>(), {
 const emit = defineEmits(['close', 'click:outside'])
 function clickOutside() {
   if (!props.persistent) {
-    emit('close')
     emit('click:outside')
   }
 }
@@ -20,10 +21,18 @@ function closeWithEsc() {
     emit('close')
   }
 }
+function disableBodyScroll() {
+  document.body.style.overflow = 'hidden'
+}
+function enableBodyScroll() {
+  document.body.style.overflow = 'auto'
+}
+onMounted(() => disableBodyScroll())
+onBeforeUnmount(() => enableBodyScroll())
 </script>
 
 <template>
-  <div class="flex items-center justify-center absolute left-0 top-0 w-screen h-screen">
+  <div class="flex items-center justify-center fixed left-0 top-0 w-screen h-screen">
     <div
       class="bg-primary-610 bg-opacity-50 dark:bg-opacity-80 absolute left-0 top-0 z-40 w-screen h-screen"
       @click.self="clickOutside"
