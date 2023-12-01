@@ -29,16 +29,15 @@ function toggleCollapsingState() {
 <template>
   <section class="w-full min-w-full rounded-tl border border-primary-500/[.32]">
     <div
-      @click="toggleCollapsingState"
       class="w-full min-w-full flex px-2 py-4 rounded-tl dark:bg-white/[.04] bg-primary-800/[.04]"
     >
-      <div class="py-1 px-2">
+      <div class="py-1 px-2" @click="toggleCollapsingState">
         <div v-if="$slots.icon" :class="isUncollapsed ? '' : 'rotate-180'">
           <slot name="icon" />
         </div>
         <ArrowButton v-else :class="isUncollapsed ? '' : 'rotate-180'" />
       </div>
-      <div class="flex flex-1 flex-col">
+      <div class="flex flex-1 flex-col" @click="toggleCollapsingState">
         <component
           :is="props.tag"
           class="text-base font-semibold leading-6 align-middle text-clay-500 dark:text-gray-100"
@@ -48,6 +47,9 @@ function toggleCollapsingState() {
         <div class="text-xs font-normal leading-4 align-middle text-clay-500 dark:text-gray-100">
           {{ description }}
         </div>
+      </div>
+      <div v-if="$slots.suffix">
+        <slot name="suffix" />
       </div>
     </div>
     <article v-show="isUncollapsed" class="border-t border-t-primary-500/[.16]"><slot /></article>
