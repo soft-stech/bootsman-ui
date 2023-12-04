@@ -68,9 +68,11 @@ const defaultSelectClasses =
   'px-3 py-2 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 w-full appearance-none pr-8'
 const disabledSelectClasses =
   'cursor-not-allowed bg-gray-200 dark:bg-clay-500 dark:text-white/[.32]'
-const selectIconClasses = twMerge(
-  'absolute right-2 bottom-2.5',
-  props.disabled && 'bg-gray-200 text-gray-500 dark:bg-clay-500 dark:text-white/[.32]'
+const selectIconClasses = computed(() =>
+  twMerge(
+    'absolute right-2 bottom-2.5',
+    props.disabled && 'bg-gray-200 text-gray-500 dark:bg-clay-500 dark:text-white/[.32]'
+  )
 )
 const selectClasses = computed(() => {
   return twMerge(defaultSelectClasses, props.disabled && disabledSelectClasses)
