@@ -53,38 +53,40 @@ const iconButtonClasses = {
   focus: 'dark:focus:ring-primary-300 focus:bg-primary-175',
   disabled: 'text-primary-250 cursor-not-allowed'
 }
-const colorClasses: Record<ButtonColor, string> = {
-  primary: twJoin(
-    primaryButtonClasses.base,
-    primaryButtonClasses.hover,
-    primaryButtonClasses.focus,
-    props.disabled && primaryButtonClasses.disabled
-  ),
-  secondary: twJoin(
-    secondaryButtonClasses.base,
-    secondaryButtonClasses.hover,
-    secondaryButtonClasses.focus,
-    props.disabled && secondaryButtonClasses.disabled
-  ),
-  text: twJoin(
-    textButtonClasses.base,
-    textButtonClasses.hover,
-    textButtonClasses.focus,
-    props.disabled && textButtonClasses.disabled
-  ),
-  outline: twJoin(
-    outlineButtonClasses.base,
-    outlineButtonClasses.hover,
-    outlineButtonClasses.focus,
-    props.disabled && outlineButtonClasses.disabled
-  ),
-  icon: twJoin(
-    iconButtonClasses.base,
-    iconButtonClasses.focus,
-    iconButtonClasses.hover,
-    props.disabled && iconButtonClasses.disabled
-  )
-}
+const colorClasses = computed((): Record<ButtonColor, string> => {
+  return {
+    primary: twJoin(
+      primaryButtonClasses.base,
+      primaryButtonClasses.hover,
+      primaryButtonClasses.focus,
+      props.disabled && primaryButtonClasses.disabled
+    ),
+    secondary: twJoin(
+      secondaryButtonClasses.base,
+      secondaryButtonClasses.hover,
+      secondaryButtonClasses.focus,
+      props.disabled && secondaryButtonClasses.disabled
+    ),
+    text: twJoin(
+      textButtonClasses.base,
+      textButtonClasses.hover,
+      textButtonClasses.focus,
+      props.disabled && textButtonClasses.disabled
+    ),
+    outline: twJoin(
+      outlineButtonClasses.base,
+      outlineButtonClasses.hover,
+      outlineButtonClasses.focus,
+      props.disabled && outlineButtonClasses.disabled
+    ),
+    icon: twJoin(
+      iconButtonClasses.base,
+      iconButtonClasses.focus,
+      iconButtonClasses.hover,
+      props.disabled && iconButtonClasses.disabled
+    )
+  }
+})
 const sizeClasses: Record<ButtonSize, string> = {
   lg: 'py-2 px-5',
   md: 'py-1 px-4',
@@ -92,7 +94,12 @@ const sizeClasses: Record<ButtonSize, string> = {
 }
 
 const buttonClasses = computed(() => {
-  return twMerge(baseClasses, colorClasses[props.color], sizeClasses[props.size], props.classes)
+  return twMerge(
+    baseClasses,
+    colorClasses.value[props.color],
+    sizeClasses[props.size],
+    props.classes
+  )
 })
 const emit = defineEmits(['click'])
 </script>
