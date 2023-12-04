@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { twMerge } from 'tailwind-merge'
 import RequiredIcon from '@/components/CommonElements/RequiredIcon.vue'
 
@@ -47,6 +47,7 @@ interface InputProps {
   required?: boolean
   validationStatus?: ValidationStatus | null
   placeholder?: string | undefined
+  hasForcedValidation?: boolean
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -68,12 +69,16 @@ const model = computed({
   }
 })
 
+const isDirty = ref(false)
+
 const inputClasses = computed(() =>
   twMerge(
     'py-2 px-3 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500',
     props.validationStatus === 'success' &&
       'border-green-300 focus:border-green-300 focus:ring-green-200',
-    props.validationStatus === 'error' && 'border-red-300 focus:border-red-300 focus:ring-red-200',
+    props.validationStatus === 'error' &&
+      (!!props.hasForcedValidation || isDirty.value) &&
+      'border-red-300 focus:border-red-300 focus:ring-red-200',
     props.disabled &&
       'bg-gray-150 placeholer:text-gray-300 dark:bg-clay-500 dark:placeholder:text-white/[.16] cursor-not-allowed'
   )
@@ -85,7 +90,16 @@ const validationWrapperClasses = computed(() =>
   twMerge(
     'text-sm font-normal',
     props.validationStatus === 'success' ? 'text-green-300' : '',
-    props.validationStatus === 'error' ? 'text-red-300' : ''
+    props.validationStatus === 'error' && (!!props.hasForcedValidation || isDirty.value)
+      ? 'text-red-300'
+      : '',
+    !props.hasForcedValidation && !isDirty.value && 'hidden'
   )
 )
+
+watch(model, (newValue, oldValue) => {
+  if (newValue !== oldValue && !isDirty.value) {
+    isDirty.value = true
+  }
+})
 </script>

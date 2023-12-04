@@ -16,19 +16,37 @@ const modelForDisabling = ref(false)
     </Variant>
     <Variant title="Placeholder & required">
       <div class="p-2">
-        <BuiInput label="Default" v-model="model" placeholder="Some text" :required="true" />
+        <BuiInput
+          label="Default"
+          v-model="model"
+          placeholder="Some text"
+          :required="true"
+          :validation-status="model.length > 0 ? undefined : 'error'"
+        >
+          <template #validationMessage v-if="model.length <= 0"> Some error text </template>
+        </BuiInput>
       </div>
     </Variant>
     <Variant title="Error">
       <div class="p-2">
-        <BuiInput label="Default" v-model="model" validation-status="error">
+        <BuiInput
+          label="Default"
+          v-model="model"
+          validation-status="error"
+          :has-forced-validation="true"
+        >
           <template #validationMessage> Some error text </template>
         </BuiInput>
       </div>
     </Variant>
     <Variant title="Success">
       <div class="p-2">
-        <BuiInput label="Default" v-model="model" validation-status="success">
+        <BuiInput
+          label="Default"
+          v-model="model"
+          validation-status="success"
+          :has-forced-validation="true"
+        >
           <template #validationMessage> Some success text </template>
         </BuiInput>
       </div>
