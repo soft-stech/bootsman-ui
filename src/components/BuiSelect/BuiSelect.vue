@@ -23,25 +23,31 @@
         </svg>
       </span>
     </span>
+    <div v-if="$slots.validationMessage" :class="validationWrapperClasses">
+      <slot name="validationMessage" />
+    </div>
   </label>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { twMerge } from 'tailwind-merge'
 import RequiredIcon from '@/components/CommonElements/RequiredIcon.vue'
 
+type ValidationStatus = 'success' | 'error'
 type OptionsType = {
   name: string
-  value: any
+  value: unknown
 }
 interface InputProps {
-  value?: string
+  value?: unknown
   label?: string
   options?: OptionsType[]
   placeholder?: string
   disabled?: boolean
   required?: boolean
+  hasForcedValidation?: boolean
+  validationStatus?: ValidationStatus | null
 }
 const props = withDefaults(defineProps<InputProps>(), {
   value: '',
@@ -49,7 +55,9 @@ const props = withDefaults(defineProps<InputProps>(), {
   options: () => [],
   placeholder: 'Please select one',
   disabled: false,
-  required: false
+  required: false,
+  hasForcedValidation: false,
+  validationStatus: null
 })
 const emit = defineEmits(['input'])
 
@@ -59,6 +67,13 @@ const model = computed({
   },
   set(event) {
     emit('input', event)
+  }
+})
+
+const isDirty = ref(false)
+watch(model, (newValue, oldValue) => {
+  if (newValue !== oldValue && !isDirty.value) {
+    isDirty.value = true
   }
 })
 
@@ -75,8 +90,27 @@ const selectIconClasses = computed(() =>
   )
 )
 const selectClasses = computed(() => {
-  return twMerge(defaultSelectClasses, props.disabled && disabledSelectClasses)
+  return twMerge(
+    defaultSelectClasses,
+    props.validationStatus === 'success' &&
+      'border-green-300 focus:border-green-300 focus:ring-green-200',
+    props.validationStatus === 'error' &&
+      (!!props.hasForcedValidation || isDirty.value) &&
+      'border-red-300 focus:border-red-300 focus:ring-red-200',
+    props.disabled && disabledSelectClasses
+  )
 })
+
+const validationWrapperClasses = computed(() =>
+  twMerge(
+    'text-sm font-normal mt-1',
+    props.validationStatus === 'success' ? 'text-green-300' : '',
+    props.validationStatus === 'error' && (!!props.hasForcedValidation || isDirty.value)
+      ? 'text-red-300'
+      : '',
+    !props.hasForcedValidation && !isDirty.value && 'hidden'
+  )
+)
 
 const labelClasses = computed(() => {
   return defaultLabelClasses
