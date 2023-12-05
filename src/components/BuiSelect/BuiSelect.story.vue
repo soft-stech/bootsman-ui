@@ -20,7 +20,18 @@ const options = [
   <Story title="BuiSelect" autoPropsDisabled :layout="{ type: 'grid', width: '400px' }">
     <Variant title="Default">
       <div class="p-2">
-        <BuiSelect label="Default" v-model="model" :options="options" :required="true" />
+        <BuiSelect label="Default" v-model="model" :options="options" />
+      </div>
+    </Variant>
+    <Variant title="Required">
+      <div class="p-2">
+        <BuiSelect
+          label="Default"
+          v-model="model"
+          :options="options"
+          :required="true"
+          :validation-status="model ? null : 'error'"
+        />
       </div>
     </Variant>
     <Variant title="Disabled">
@@ -63,7 +74,7 @@ const options = [
         v-model="model"
         :validation-status="model !== '1' ? null : 'error'"
       >
-        <template #validationMessage v-if="model == '1'"> Do not select 'One'</template>
+        <template #validationMessage> Do not select 'One'</template>
       </BuiSelect>
     </Variant>
   </Story>

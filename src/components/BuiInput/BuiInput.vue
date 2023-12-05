@@ -93,7 +93,7 @@ const validationWrapperClasses = computed(() =>
     props.validationStatus === 'error' && (!!props.hasForcedValidation || isDirty.value)
       ? 'text-red-300'
       : '',
-    !props.hasForcedValidation && !isDirty.value && 'hidden'
+    (props.validationStatus === null || (!props.hasForcedValidation && !isDirty.value)) && 'hidden'
   )
 )
 

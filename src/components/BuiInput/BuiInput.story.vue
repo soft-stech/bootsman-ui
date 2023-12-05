@@ -23,7 +23,7 @@ const modelForDisabling = ref(false)
           :required="true"
           :validation-status="model.length > 0 ? undefined : 'error'"
         >
-          <template #validationMessage v-if="model.length <= 0"> Some error text </template>
+          <template #validationMessage> Some error text </template>
         </BuiInput>
       </div>
     </Variant>
