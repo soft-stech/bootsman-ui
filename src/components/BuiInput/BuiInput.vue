@@ -17,8 +17,8 @@
         :disabled="disabled"
         :required="required"
         :class="[inputClasses, $slots.prefix ? 'pl-10' : '']"
-        @focusin="emit('focus')"
-        @blur="emit('blur')"
+        @focusin="handleFocus"
+        @blur="handleBlur"
         :placeholder="placeholder"
       />
       <div v-if="$slots.suffix" class="absolute right-2.5 bottom-2.5">
@@ -43,7 +43,7 @@ type ValidationStatus = 'success' | 'error'
 interface InputProps {
   disabled?: boolean
   label?: string
-  value?: string
+  value?: string | number
   required?: boolean
   validationStatus?: ValidationStatus | null
   placeholder?: string | undefined
@@ -70,6 +70,23 @@ const model = computed({
 })
 
 const isDirty = ref(false)
+const isInFocus = ref(false)
+function handleBlur() {
+  isInFocus.value = false
+  isDirty.value = true
+  emit('blur')
+}
+
+function handleFocus() {
+  isInFocus.value = true
+  emit('focus')
+}
+
+watch(model, (newValue, oldValue) => {
+  if (newValue !== oldValue && !isDirty.value && !isInFocus.value) {
+    isDirty.value = true
+  }
+})
 
 const inputClasses = computed(() =>
   twMerge(
@@ -96,10 +113,4 @@ const validationWrapperClasses = computed(() =>
     (props.validationStatus === null || (!props.hasForcedValidation && !isDirty.value)) && 'hidden'
   )
 )
-
-watch(model, (newValue, oldValue) => {
-  if (newValue !== oldValue && !isDirty.value) {
-    isDirty.value = true
-  }
-})
 </script>
