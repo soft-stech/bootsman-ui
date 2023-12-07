@@ -6,7 +6,7 @@
     </span>
 
     <span class="relative flex">
-      <select v-model="model" :disabled="disabled" :class="selectClasses">
+      <select v-model="model" :disabled="disabled" :class="selectClasses" @blur="handleBlur">
         <option disabled selected value="">
           {{ placeholder }}
         </option>
@@ -59,7 +59,7 @@ const props = withDefaults(defineProps<InputProps>(), {
   hasForcedValidation: false,
   validationStatus: null
 })
-const emit = defineEmits(['input'])
+const emit = defineEmits(['input', 'blur'])
 
 const model = computed({
   get() {
@@ -71,6 +71,11 @@ const model = computed({
 })
 
 const isDirty = ref(false)
+function handleBlur() {
+  isDirty.value = true
+  emit('blur')
+}
+
 watch(model, (newValue, oldValue) => {
   if (newValue !== oldValue && !isDirty.value) {
     isDirty.value = true
