@@ -52,7 +52,7 @@ describe('BuiInput', () => {
     createComponent({ propsData: { validationStatus: 'error', hasForcedValidation: true } })
     const input = wrapper.find('input')
     expect(input.classes().join(' ')).toEqual(
-      'py-2 px-3 border dark:border-gray-500 dark:focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 border-red-300 focus:border-red-300 focus:ring-red-200'
+      'py-2 px-3 border bg-transparent rounded-lg focus:ring-2 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 border-red-300 dark:border-red-300 dark:focus:border-red-300 focus:border-red-300 focus:ring-red-300/[.16] dark:focus:ring-red-300/[.16]'
     )
   })
 
@@ -60,7 +60,7 @@ describe('BuiInput', () => {
     createComponent({ propsData: { validationStatus: 'success', hasForcedValidation: true } })
     const input = wrapper.find('input')
     expect(input.classes().join(' ')).toEqual(
-      'py-2 px-3 border dark:border-gray-500 dark:focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 border-green-300 focus:border-green-300 focus:ring-green-200'
+      'py-2 px-3 border bg-transparent rounded-lg focus:ring-2 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500 border-green-300 dark:border-green-300 dark:focus:border-green-300 dark:focus:ring-green-300/[.16] focus:border-green-300 focus:ring-green-300/[.16]'
     )
   })
 

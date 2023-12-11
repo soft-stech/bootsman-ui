@@ -98,10 +98,10 @@ const selectClasses = computed(() => {
   return twMerge(
     defaultSelectClasses,
     props.validationStatus === 'success' &&
-      'border-green-300 focus:border-green-300 focus:ring-green-200',
+      'border-green-300 focus:border-green-300 focus:ring-green-300/[.16] dark:border-green-300 dark:focus:border-green-300 dark:focus:ring-green-300/[.16]',
     props.validationStatus === 'error' &&
       (!!props.hasForcedValidation || isDirty.value) &&
-      'border-red-300 focus:border-red-300 focus:ring-red-200',
+      'border-red-300  dark:border-red-300 focus:border-red-300 dark:focus:border-red-300 focus:ring-red-300/[.16] dark:focus:ring-red-300/[.16]',
     props.disabled && disabledSelectClasses
   )
 })

@@ -105,12 +105,14 @@ const modelForDisabling = ref(false)
       </div>
     </Variant>
     <Variant title="Dynamic disabling">
-      <BuiToggle v-model="modelForDisabling" label="Disabled" />
-      <BuiInput
-        placeholder="Placeholder"
-        label="My label"
-        :disabled="modelForDisabling ? true : undefined"
-      />
+      <div class="p-2 bg-primary-800">
+        <BuiToggle v-model="modelForDisabling" label="Disabled" />
+        <BuiInput
+          placeholder="Placeholder"
+          label="My label"
+          :disabled="modelForDisabling ? true : undefined"
+        />
+      </div>
     </Variant>
   </Story>
 </template>

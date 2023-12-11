@@ -12,7 +12,7 @@ withDefaults(
 
 <template>
   <div
-    class="bg-red-200 text-red-300 py-2 px-5 border-l border-red-300 rounded flex items-center justify-start"
+    class="bg-red-300/[.16] text-red-300 py-2 px-5 border-l border-red-300 rounded flex items-center justify-start"
   >
     <slot name="icon" v-if="icon || $slots.alert">
       <svg class="w-4 h-4 mr-2" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
