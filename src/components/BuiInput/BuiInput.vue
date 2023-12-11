@@ -92,12 +92,12 @@ const inputClasses = computed(() =>
   twMerge(
     'py-2 px-3 border border-slate-300 dark:border-gray-500 dark:focus:border-primary-500 focus:border-primary-500 bg-transparent rounded-lg focus:ring-2 focus:ring-primary-200 dark:focus:ring-primary-550 outline-none w-full dark:text-gray-100 text-clay-500 placeholder-gray-500',
     props.validationStatus === 'success' &&
-      'border-green-300 focus:border-green-300 focus:ring-green-200',
+      'border-green-300 dark:border-green-300 dark:focus:border-green-300 dark:focus:ring-green-300/[.16] focus:border-green-300 focus:ring-green-300/[.16]',
     props.validationStatus === 'error' &&
       (!!props.hasForcedValidation || isDirty.value) &&
-      'border-red-300 focus:border-red-300 focus:ring-red-200',
+      'border-red-300 dark:border-red-300 dark:focus:border-red-300 focus:border-red-300 focus:ring-red-300/[.16] dark:focus:ring-red-300/[.16]',
     props.disabled &&
-      'bg-gray-150 placeholer:text-gray-300 dark:bg-clay-500 dark:placeholder:text-white/[.16] cursor-not-allowed'
+      'bg-gray-150 placeholer:text-gray-300 dark:bg-white/[.16] dark:placeholder:text-white/[.16] cursor-not-allowed'
   )
 )
 

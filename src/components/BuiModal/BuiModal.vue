@@ -39,7 +39,7 @@ onBeforeUnmount(() => enableBodyScroll())
     />
     <div
       ref="modalRef"
-      class="shadow-my min-w-30 min-h-30 overflow-y-auto w-max h-max overflow-x-hidden z-50 md:inset-0 justify-center items-center flex p-8 bg-white rounded-lg"
+      class="shadow-my min-w-30 min-h-30 overflow-y-auto w-max h-max overflow-x-hidden z-50 md:inset-0 justify-center items-center flex p-8 bg-white dark:bg-primary-800 rounded-lg"
       tabindex="0"
       @keyup.esc="closeWithEsc"
     >
