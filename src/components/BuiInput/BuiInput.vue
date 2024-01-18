@@ -37,7 +37,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
 import { twMerge } from 'tailwind-merge'
-import RequiredIcon from '@/components/CommonElements/RequiredIcon.vue'
+import RequiredIcon from '../CommonElements/RequiredIcon.vue'
 
 type ValidationStatus = 'success' | 'error'
 interface InputProps {

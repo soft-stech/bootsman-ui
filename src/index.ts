@@ -18,3 +18,4 @@ export { default as BuiTableFooter } from './components/BuiTable/BuiTableFooter.
 export { default as BuiTableHead } from './components/BuiTable/BuiTableHead.vue'
 export { default as BuiTableHeadCell } from './components/BuiTable/BuiTableHeadCell.vue'
 export { default as BuiTableRow } from './components/BuiTable/BuiTableRow.vue'
+export { default as BuiProgressBar } from './components/BuiProgress/BuiProgress.vue'
