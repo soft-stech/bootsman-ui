@@ -56,10 +56,13 @@ const scaleWidthClass = computed(() => {
     <div class="flex items-center max-w-full w-full h-[21px] min-h-[21px] relative">
       <div class="flex flex-row z-1 absolute left-0 top-0 w-full min-w-full h-[21px] max-h-[21px]">
         <div
-          class="h-[21px] max-h-[21px] w-[6px] min-w-[6px] rounded-left-cap bg-primary-500/[.2]"
+          class="h-[21px] max-h-[21px] w-[6px] min-w-[6px] rounded-left-cap bg-primary-500/[.12]"
         ></div>
-        <div class="w-full h-[21px] flex-1 relative bg-primary-500/[.2]"></div>
-        <div class="h-[21px] w-[6px] max-w-[6px] rounded-right-cap bg-primary-500/[.2]"></div>
+        <div class="w-full h-[21px] flex-1 relative bg-primary-500/[.12]"></div>
+        <div class="h-[21px] w-[6px] max-w-[6px] rounded-right-cap bg-primary-500/[.12]"></div>
+        <div
+          class="h-[21px] w-[6px] max-w-[6px] ellips bg-primary-500/[.08] absolute right-0 top-0"
+        ></div>
       </div>
 
       <div class="flex flex-row z-2" :style="scaleWidthClass">
