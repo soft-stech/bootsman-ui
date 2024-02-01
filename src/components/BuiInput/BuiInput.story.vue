@@ -2,7 +2,6 @@
 import BuiInput from './BuiInput.vue'
 import BuiToggle from '../BuiToggle/BuiToggle.vue'
 import { ref } from 'vue'
-import BuiSelect from '../BuiSelect/BuiSelect.vue'
 
 const model = ref('')
 const modelForDisabling = ref(false)
