@@ -4,11 +4,12 @@ import BuiTooltip from '@/components/BuiTooltip/BuiTooltip.vue'
 
 <template>
   <Story title="BuiTooltip" autoPropsDisabled :layout="{ type: 'grid', width: '100%' }">
-    <Variant title="variant 'info'">
+    <Variant title="variant 'info' on hover">
       <br /><br />
       <br /><br />
       <BuiTooltip
         variant="info"
+        event="hover"
         content="My tooltip info <a href='https://stsoft.ru'>ST Soft</a>"
       />
       <br />

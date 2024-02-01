@@ -2,6 +2,12 @@
   <div class="flex flex-col justify-center gap-1">
     <label v-if="label" :class="labelClasses">
       {{ label }}
+      <BuiTooltip
+        v-if="infoTooltip"
+        :event="infoTooltipEvent"
+        variant="info"
+        :content="infoTooltip"
+      />
       <RequiredIcon v-if="required && !disabled" />
     </label>
     <div class="flex relative">
@@ -38,6 +44,7 @@
 import { computed, ref, watch } from 'vue'
 import { twMerge } from 'tailwind-merge'
 import RequiredIcon from '../CommonElements/RequiredIcon.vue'
+import BuiTooltip from '../BuiTooltip/BuiTooltip.vue'
 
 type ValidationStatus = 'success' | 'error'
 interface InputProps {
@@ -48,6 +55,8 @@ interface InputProps {
   validationStatus?: ValidationStatus | null
   placeholder?: string | undefined
   hasForcedValidation?: boolean
+  infoTooltip?: string
+  infoTooltipEvent?: 'hover' | 'click'
 }
 
 const props = withDefaults(defineProps<InputProps>(), {
@@ -56,7 +65,8 @@ const props = withDefaults(defineProps<InputProps>(), {
   value: '',
   required: false,
   validationStatus: null,
-  placeholder: ''
+  placeholder: '',
+  infoTooltipEvent: 'hover'
 })
 const emit = defineEmits(['focus', 'blur', 'input'])
 

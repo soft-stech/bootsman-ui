@@ -2,6 +2,7 @@
 import BuiInput from './BuiInput.vue'
 import BuiToggle from '../BuiToggle/BuiToggle.vue'
 import { ref } from 'vue'
+import BuiSelect from '../BuiSelect/BuiSelect.vue'
 
 const model = ref('')
 const modelForDisabling = ref(false)
@@ -111,6 +112,28 @@ const modelForDisabling = ref(false)
           placeholder="Placeholder"
           label="My label"
           :disabled="modelForDisabling ? true : undefined"
+        />
+      </div>
+    </Variant>
+    <Variant title="Tooltip on hover">
+      <div class="p-2">
+        <BuiInput
+          label="Default"
+          v-model="model"
+          info-tooltip-event="hover"
+          info-tooltip="My tooltip info <a href='https://stsoft.ru'>ST Soft </a>"
+        />
+      </div>
+    </Variant>
+    <Variant title="Tooltip on click for required">
+      <div class="p-2">
+        <BuiInput
+          label="Kubernetes Api Endpoint Port"
+          placeholder="1-65535"
+          :required="true"
+          info-tooltip-event="click"
+          info-tooltip="e.g. 6440"
+          v-model="model"
         />
       </div>
     </Variant>
