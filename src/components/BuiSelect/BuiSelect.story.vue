@@ -77,5 +77,24 @@ const options = [
         <template #validationMessage> Do not select 'One'</template>
       </BuiSelect>
     </Variant>
+    <Variant title="Info tooltip on hover">
+      <BuiSelect
+        label="Select option"
+        :options="options"
+        v-model="model"
+        info-tooltip="My tooltip"
+        info-tooltip-event="hover"
+      />
+    </Variant>
+    <Variant title="Required with info tooltip on click">
+      <BuiSelect
+        label="Select right option (2)"
+        :options="options"
+        v-model="model"
+        info-tooltip-event="click"
+        info-tooltip="My tooltip"
+        :required="true"
+      />
+    </Variant>
   </Story>
 </template>

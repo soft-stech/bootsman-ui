@@ -2,6 +2,12 @@
   <label class="relative">
     <span v-if="label" :class="labelClasses">
       {{ label }}
+      <BuiTooltip
+        v-if="infoTooltip"
+        :event="infoTooltipEvent"
+        variant="info"
+        :content="infoTooltip"
+      />
       <RequiredIcon v-if="required && !disabled" />
     </span>
 
@@ -33,6 +39,7 @@
 import { computed, ref, watch } from 'vue'
 import { twMerge } from 'tailwind-merge'
 import RequiredIcon from '@/components/CommonElements/RequiredIcon.vue'
+import BuiTooltip from '../BuiTooltip/BuiTooltip.vue'
 
 type ValidationStatus = 'success' | 'error'
 type OptionsType = {
@@ -48,6 +55,8 @@ interface InputProps {
   required?: boolean
   hasForcedValidation?: boolean
   validationStatus?: ValidationStatus | null
+  infoTooltip?: string
+  infoTooltipEvent?: 'hover' | 'click'
 }
 const props = withDefaults(defineProps<InputProps>(), {
   value: '',
@@ -57,7 +66,8 @@ const props = withDefaults(defineProps<InputProps>(), {
   disabled: false,
   required: false,
   hasForcedValidation: false,
-  validationStatus: null
+  validationStatus: null,
+  infoTooltipEvent: 'hover'
 })
 const emit = defineEmits(['input', 'blur'])
 

@@ -114,5 +114,27 @@ const modelForDisabling = ref(false)
         />
       </div>
     </Variant>
+    <Variant title="Tooltip on hover">
+      <div class="p-2">
+        <BuiInput
+          label="Default"
+          v-model="model"
+          info-tooltip-event="hover"
+          info-tooltip="My tooltip info <a href='https://stsoft.ru'>ST Soft </a>"
+        />
+      </div>
+    </Variant>
+    <Variant title="Tooltip on click for required">
+      <div class="p-2">
+        <BuiInput
+          label="Kubernetes Api Endpoint Port"
+          placeholder="1-65535"
+          :required="true"
+          info-tooltip-event="click"
+          info-tooltip="e.g. 6440"
+          v-model="model"
+        />
+      </div>
+    </Variant>
   </Story>
 </template>

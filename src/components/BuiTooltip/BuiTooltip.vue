@@ -5,14 +5,26 @@ import { onMounted } from 'vue'
 import InfoIcon from '@/components/CommonElements/InfoIcon.vue'
 import { nanoid } from 'nanoid'
 
-const props = defineProps<{ content: string; variant: 'info' | 'id' | 'slot'; id?: string }>()
+const props = withDefaults(
+  defineProps<{
+    content: string
+    variant: 'info' | 'id' | 'slot'
+    event: 'click' | 'hover'
+    id?: string
+  }>(),
+  {
+    content: '',
+    variant: 'info',
+    event: 'hover'
+  }
+)
 const componentId = nanoid()
 
 onMounted(() => {
   const selector = props.variant === 'id' && props.id ? `#${props.id}` : `#${componentId}`
 
   tippy(selector, {
-    trigger: 'click',
+    trigger: props.event === 'hover' ? undefined : 'click',
     interactive: true,
     allowHTML: true,
     arrow: false,
@@ -24,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative">
+  <div>
     <div
       v-if="variant === 'info' || (variant === 'id' && !id)"
       class="w-fit relative text-primary-500 hover:text-primary-550 py-1 cursor-pointer"
