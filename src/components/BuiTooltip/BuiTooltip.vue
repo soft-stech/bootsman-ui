@@ -18,7 +18,7 @@ const props = withDefaults(
     event: 'hover'
   }
 )
-const componentId = nanoid()
+const componentId = 'tooltip_' + nanoid()
 
 onMounted(() => {
   const selector = props.variant === 'id' && props.id ? `#${props.id}` : `#${componentId}`
