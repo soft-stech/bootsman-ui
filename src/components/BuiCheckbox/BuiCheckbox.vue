@@ -27,7 +27,7 @@ const model = computed({
   }
 })
 
-const id = nanoid(10)
+const id = 'checkbox_' + nanoid(10)
 
 const disabledAttrValue = computed(() => {
   return Object.keys(props).includes('disabled') && props.disabled !== false ? true : undefined
